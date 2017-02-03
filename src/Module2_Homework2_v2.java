@@ -9,8 +9,6 @@ public class Module2_Homework2_v2 {
 
         float balance, withdrawal, commRate; // all floats because all can have float values, especially after withdrawal
 
-        float[] WithdrawalReturn; // declare array to store information
-
         balance = 100;
         commRate = (float) 5/100;
 
