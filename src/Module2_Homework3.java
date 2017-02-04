@@ -44,7 +44,7 @@ public class Module2_Homework3 {
             WithdrawalReturn = bankwithdrawal(balance, withdrawal, commissions); // calling method
 
             // printing results
-            System.out.println((name + " " + WithdrawalReturn[0] + " " + WithdrawalReturn[1] ));
+            System.out.println((name + " " + (int) WithdrawalReturn[0] + " " + WithdrawalReturn[1] ));
         } else {
             System.out.println(name + "  NO");
         }
