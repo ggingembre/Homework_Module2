@@ -13,11 +13,9 @@ public class Module2_Homework2_v2 {
         commRate = (float) 5/100;
 
         withdrawal = 10;
-
         enquiry(balance, withdrawal, commRate);
 
         withdrawal = 99;
-
         enquiry(balance, withdrawal, commRate);
     }
 
@@ -60,5 +58,4 @@ public class Module2_Homework2_v2 {
         }
         return (OK);
     }
-
 }
