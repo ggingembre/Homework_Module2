@@ -1,6 +1,3 @@
-import javax.lang.model.element.Name;
-import java.util.Arrays;
-
 /**
  * Created by Guillaume Gingembre on 03/02/2017.
  */
@@ -92,6 +89,13 @@ public class Module2_Homework3 {
                 i++;
             }
         }
+
+        if (SearchName == true) {
+
+            System.out.println("ERROR occured :::: ownerName " + name + " not found!!!");
+            System.exit(1);
+        }
+
         return (i);
     }
 
