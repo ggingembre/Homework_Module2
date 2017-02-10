@@ -12,7 +12,8 @@ public class Module2_Homework1 {
         Random rand = new Random(); // initiate the random method
         int i; // index for array
         int n; // random number, type int to keep the product smaller
-        int mySum, myMin, myMax, myMaxPos, myModulus, mySecondLargest; // computed values from array
+        int mySum, myMin, myMax, myModulus, mySecondLargest; // computed values from array
+        String myMaxPos; // max positive
         double myProduct; // double as value can get high
 
         for (i = 0; i < 10; i++ ) {
@@ -31,12 +32,19 @@ public class Module2_Homework1 {
         myMax = max(myArray); // invoke method to find max
         System.out.println("The max is " +myMax + ".");
 
-        myMaxPos = maxPositive(myArray); // invoke method to find max positive and return error if no positive
-        if (myMaxPos > 0) {
-            System.out.println("The max positive is " +myMaxPos + ".");
-        } else {
-            System.out.println("There is no positive number in this random array. Try again");
-        }
+        // I had tested for arrays with only negative numbers, and it worked fine because of the below logic:
+
+        //myMaxPos = maxPositive(myArray); // invoke method to find max positive and return error if no positive
+        // if (myMaxPos > 0) {
+        //    System.out.println("The max positive is " +myMaxPos + ".");
+        //} else {
+        //    System.out.println("There is no positive number in this random array. Try again");
+        // }
+
+        // I have rewritten maxPositive to include the above logic in the array, but as the output can be
+        // a string, I changed the method into a method that outputs a string.
+
+        System.out.println(maxPositive(myArray));
 
         myProduct = multiplication(myArray); // invoke method to find product
         System.out.println("The product is " +myProduct + ".");
@@ -54,7 +62,7 @@ public class Module2_Homework1 {
     public static int  sum(int [ ] value)  //method definition to find sum
     {
         int i, total = 0;
-        for(i=0; i<10; i++)
+        for(i=0; i<value.length; i++)
         {
             total += value[ i ];
         }
@@ -66,7 +74,7 @@ public class Module2_Homework1 {
     {
         int i, total;
         total = value [0];
-        for(i=0; i<10; i++)
+        for(i=0; i<value.length; i++)
         {
             if (value [i] < total) {total = value[ i ];}
         }
@@ -78,7 +86,7 @@ public class Module2_Homework1 {
     {
         int i, total;
         total = value [0];
-        for(i=0; i<10; i++)
+        for(i=0; i<value.length; i++)
         {
             if (value [i] > total) {total = value[ i ];}
         }
@@ -86,35 +94,36 @@ public class Module2_Homework1 {
         return (total);
     }
 
-    public static int  maxPositive(int [ ] value)  //method definition to find sum
+    public static String  maxPositive(int [ ] value)  //method definition to find max positive
     {
         int i, total;
         total = value [0];
-        for(i=0; i<10; i++)
+        for(i=0; i<value.length; i++)
         {
             if (value [i] > total && value[i] > 0) {total = value[ i ];}
         }
 
-        return (total);
+        if (total > 0) {return ("The max positive is " + total + " .");}
+        else {return "There is no positive number in this random array";}
     }
 
-    public static double  multiplication(int [ ] value)  //method definition to find sum
+    public static double  multiplication(int [ ] value)  //method definition to find product
     {
         int i;
         double total;
         total = 1;
-        for(i=0; i<10; i++)
+        for(i=0; i<value.length; i++)
         {
             total *= value [i];
         }
         return (total);
     }
 
-    public static int  modulus(int [ ] value)  //method definition to find sum
+    public static int  modulus(int [ ] value)  //method definition to find modulus
     {
         int i, j, total;
         i = value [0];
-        j = value [9];
+        j = value [value.length-1];
         total = i%j;
 
         return (total);
@@ -124,20 +133,15 @@ public class Module2_Homework1 {
     {
         int i, total, largest;
         total = value [0];
-        largest = value[0];
+        largest = max (value);
         for(i=0; i<10; i++)
         {
-            if (value [i] > largest) {
-                total = largest;
-                largest = value[ i ];
-            } else if (value[i] > total) {
-                total = value[i];
+            if ((value [i] > total)&&(value[i]<largest)) {
+                total = value[ i ];
+            }
         }
-        }
+
         return (total);
     }
 
 }
-
-
-
